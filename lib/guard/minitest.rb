@@ -16,6 +16,8 @@ module Guard
     end
 
     def start
+      paths = @inspector.clean_all
+      return @runner.run(paths, :message => 'Running all tests') unless paths.empty?
       true
     end
 
@@ -24,6 +26,8 @@ module Guard
     end
 
     def reload
+      paths = @inspector.clean_all
+      return @runner.run(paths, :message => 'Running all tests') unless paths.empty?
       true
     end
 

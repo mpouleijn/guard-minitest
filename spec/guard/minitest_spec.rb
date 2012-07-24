@@ -35,6 +35,8 @@ describe Guard::Minitest do
   describe 'start' do
 
     it 'should return true' do
+      inspector.stubs(:clean_all).returns(['test/guard/minitest/test_inspector.rb', 'test/guard/test_minitest.rb'])
+      runner.expects(:run).with(['test/guard/minitest/test_inspector.rb', 'test/guard/test_minitest.rb'], {:message => 'Running all tests'}).returns(true)
       guard.start.must_equal true
     end
 
@@ -51,6 +53,8 @@ describe Guard::Minitest do
   describe 'reload' do
 
     it 'should return true' do
+      inspector.stubs(:clean_all).returns(['test/guard/minitest/test_inspector.rb', 'test/guard/test_minitest.rb'])
+      runner.expects(:run).with(['test/guard/minitest/test_inspector.rb', 'test/guard/test_minitest.rb'], {:message => 'Running all tests'}).returns(true)
       guard.reload.must_equal true
     end
 
